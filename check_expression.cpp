@@ -14,10 +14,17 @@ void check_the_expression(std::string expression) {
                 break;
             // if the character is a closed parenthesis, it will pop an open
             // parenthesis out of the stack
-            case ')':
-                thestack.pop();
+            case ')': 
+                // if the next character is a closed parenthesis but the stack is empty,
+                // the closed parenthesis is added to the stack.
+                if (thestack.empty() == true) {
+                    thestack.push(parenthesis);
+                } else {
+                    thestack.pop();
+                }
                 break;    
         }
+    std::cout << thestack.size();
     }
     // this if statement checks if the stack is empty or not to check if is balanced or not
     if (thestack.empty()) {
